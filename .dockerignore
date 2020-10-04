@@ -1,5 +1,4 @@
 Dockerfile
 docker-compose-yml
-.vscode
 README.md
 .gitlab-ci.yml
