@@ -1,0 +1,33 @@
+stages:
+    - Deploy
+    - Stop
+
+  Deploy:
+    image: docker/compose:latest
+    tags:
+      - docker
+    stage: Deploy
+    script:
+      - docker-compose up -d --force-recreate --remove-orphans --build
+    only:
+     - master
+    environment:
+      name: Production
+      url: https://cdn.leagueofsandbox.com
+      on_stop: Stop
+  
+  Stop:
+    image: docker/compose:latest
+    tags:
+      - docker
+    stage: Stop
+    script:
+      - docker-compose down
+    only: 
+      - master
+    environment:
+      name: Production
+      url: https://cdn.leagueofsandbox.com
+      action: stop
+    when: manual
+  
