@@ -1,29 +1,30 @@
+
+image: docker/compose:latest
+
 stages:
     - Deploy
     - Stop
 
-  Deploy:
-    image: docker/compose:latest
-    tags:
-      - docker
-    stage: Deploy
-    script:
-      - docker-compose up -d --force-recreate --remove-orphans --build
-    environment:
-      name: Production
-      url: https://cdn.leagueofsandbox.com
-      on_stop: Stop
-  
-  Stop:
-    image: docker/compose:latest
-    tags:
-      - docker
-    stage: Stop
-    script:
-      - docker-compose down
-    environment:
-      name: Production
-      url: https://cdn.leagueofsandbox.com
-      action: stop
-    when: manual
+Deploy:
+  tags:
+    - docker
+  stage: Deploy
+  script:
+    - docker-compose up -d --force-recreate --remove-orphans --build
+  environment:
+    name: Production
+    url: https://cdn.leagueofsandbox.com
+    on_stop: Stop
+
+Stop:
+  tags:
+    - docker
+  stage: Stop
+  script:
+    - docker-compose down
+  environment:
+    name: Production
+    url: https://cdn.leagueofsandbox.com
+    action: stop
+  when: manual
   
