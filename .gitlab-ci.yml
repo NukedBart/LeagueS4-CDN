@@ -9,8 +9,6 @@ stages:
     stage: Deploy
     script:
       - docker-compose up -d --force-recreate --remove-orphans --build
-    only:
-     - master
     environment:
       name: Production
       url: https://cdn.leagueofsandbox.com
@@ -23,8 +21,6 @@ stages:
     stage: Stop
     script:
       - docker-compose down
-    only: 
-      - master
     environment:
       name: Production
       url: https://cdn.leagueofsandbox.com
