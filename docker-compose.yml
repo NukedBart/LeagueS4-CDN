@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  los:
+  ls4:
     build: .
     container_name: ls4_cdn
     hostname: ls4_cdn
