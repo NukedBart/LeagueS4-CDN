@@ -12,7 +12,7 @@ Deploy:
     - docker-compose up -d --force-recreate --remove-orphans --build
   environment:
     name: Production
-    url: https://cdn.leagueofsandbox.com
+    url: https://cdn.leagues4.com
     on_stop: Stop
 
 Stop:
@@ -23,7 +23,7 @@ Stop:
     - docker-compose down
   environment:
     name: Production
-    url: https://cdn.leagueofsandbox.com
+    url: https://cdn.leagues4.com
     action: stop
   when: manual
   
